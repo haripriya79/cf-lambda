@@ -27,7 +27,7 @@ exports.handler = async(event, context) => {
                     .promise();
                 body = `Deleted item ${event.pathParameters.id}`;
                 break;
-            case "GET /getstudents/{id}":
+            case "GET /testDynamodb/students/{id}":
                 body = await dynamo
                     .get({
                         TableName: "student",
@@ -37,7 +37,7 @@ exports.handler = async(event, context) => {
                     })
                     .promise();
                 break;
-            case "GET /getstudents":
+            case "GET /testDynamodb/students":
                 body = await dynamo.scan({ TableName: "student" }).promise();
                 break;
             case "PUT /testDynamodb/students":
