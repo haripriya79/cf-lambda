@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Creating the Dyanmodb crud using the lambda
+Resources:
+  myLambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs14.x
+      CodeUri: ./dynamodb
+      Description: 'Lambda function for Dynamodb'
+      MemorySize: 128
+      Timeout: 30
+      Role: 'arn:aws:iam::401789609362:role/service-role/testDynamodb-role-twa00z0q'
+      Events:
+        getstudentsAPI:
+          Type: Api
+          Properties:
+            Path: /getstudents
+            Method: get
+        getstudentAPI:
+          Type: Api
+          Properties:
+            Path: /getstudents/{id}
+            Method: get
+      Environment:
+        Variables:
+          REGION: us-east-1

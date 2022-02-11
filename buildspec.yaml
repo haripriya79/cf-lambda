@@ -1,0 +1,9 @@
+version: 0.1
+phases:
+  install:
+    commands:
+      - aws cloudformation package --template-file test-dynamodb.yaml --s3-bucket test-dynamodb-lambda-codepipeline --output-template-file outputfile.yaml
+artifacts:
+  type: zip
+  files:
+    - '**/*''
